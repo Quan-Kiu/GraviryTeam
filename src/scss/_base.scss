@@ -1,0 +1,124 @@
+@use "./variables" as var;
+@use "./func" as *;
+html {
+  font-size: 62.5%;
+}
+body {
+  overflow-x: hidden;
+  background: var.$bg;
+  font-family: var.$pf;
+  color: var.$clr;
+  line-height: lineHeight(var.$fz, 30);
+  font-size: var.$fz;
+}
+* {
+  box-sizing: border-box;
+  color: inherit;
+  font-family: inherit;
+  line-height: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+.bg-linear {
+  background: var.$bg-linear;
+}
+
+.btn {
+  text-transform: uppercase;
+  padding: 17px 27px;
+  font-size: var.$fzss;
+  font-weight: 500;
+  position: relative;
+  border: unset;
+  outline: unset;
+  background-color: transparent;
+  overflow: hidden;
+  border-image: var.$bg-linear 1;
+  border-width: 1px;
+  border-style: solid;
+
+  &::before {
+    content: "";
+    transition: transform 0.5s;
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    top: 0;
+    left: 0;
+    background: var.$bg-linear;
+  }
+  cursor: pointer;
+  &:hover {
+    &::before {
+      transform: translateX(100%);
+    }
+  }
+}
+
+.container {
+  width: var.$container;
+  margin: 0 auto;
+}
+
+.section-mt {
+  margin-top: 120px;
+}
+
+.section-title {
+  font-size: var.$fzsl;
+  line-height: lineHeight(var.$fzsl, 78);
+}
+
+.section-desc {
+  margin-top: 24px;
+  line-height: lineHeight(var.$fz, 30);
+}
+
+.section-header {
+  text-align: center;
+  width: min(612px, 100%);
+  margin: 0 auto;
+}
+
+.simple-btn {
+  position: relative;
+  padding: unset;
+  color: var.$white-clr;
+  cursor: pointer;
+  background: transparent;
+  border: unset;
+  outline: unset;
+  font-size: var.$fzs;
+  color: transparent;
+  background: var.$bg-linear;
+  background-clip: text;
+  overflow: hidden;
+  padding: 6px 0;
+
+  &::after {
+    content: "→";
+    color: transparent;
+    background: var.$bg-linear;
+    background-clip: text;
+  }
+
+  &:hover {
+    &::before {
+      transform: translateX(100%);
+    }
+  }
+
+  &::before {
+    position: absolute;
+    content: "";
+    bottom: 0px;
+    background: var.$bg-linear;
+    width: 100%;
+    left: 0;
+    height: 2px;
+    transition: transform 0.5s;
+  }
+}

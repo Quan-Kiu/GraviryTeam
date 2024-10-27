@@ -1,0 +1,55 @@
+@use "../variables" as *;
+@use "../func" as *;
+
+.crypto-market-marking {
+  position: relative;
+  .sub-bg {
+    position: absolute;
+    left: -50%;
+    top: -50%;
+    z-index: -1;
+  }
+  .main {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+
+    article {
+      display: flex;
+      align-items: center;
+      .content {
+        width: 40%;
+        .title {
+          color: $white-clr;
+          font-size: $fzl;
+          line-height: lineHeight($fzl, 44);
+        }
+        .sub-title {
+          margin-top: 27px;
+          color: $white-clr;
+          line-height: lineHeight($fz, 28);
+        }
+        p {
+          margin-top: 20px;
+        }
+        .simple-btn {
+          margin-top: 32px;
+        }
+      }
+      .media {
+        margin-left: auto;
+      }
+    }
+
+    article:last-child {
+      margin-top: 110px;
+      .content {
+        order: 2;
+      }
+      .media {
+        margin-right: auto;
+        margin-left: unset;
+      }
+    }
+  }
+}
