@@ -1,5 +1,6 @@
 @use "../variables" as *;
 @use "../func" as *;
+@use "../mixin" as *;
 
 .about-gravity-team {
   .main {
@@ -11,6 +12,7 @@
       .about-item {
         padding: 25px;
         display: flex;
+        justify-content: center;
         cursor: auto;
         flex-direction: column;
         align-items: center;
@@ -47,6 +49,24 @@
       }
       .about-item:nth-child(n + 5) {
         border-top: thin solid $blue-clr;
+      }
+
+      @include responsive($xl) {
+        grid-template-columns: repeat(2, 1fr);
+        .about-item {
+          border: thin solid $blue-clr;
+        }
+      }
+      @include responsive($md) {
+        grid-template-columns: repeat(1, 1fr);
+        .about-item {
+          .stats {
+            font-size: 3.4rem;
+          }
+          .desc-of-stats {
+            font-size: $fzs;
+          }
+        }
       }
     }
   }

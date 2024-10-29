@@ -1,12 +1,13 @@
 @use "../variables" as *;
 @use "../func" as *;
+@use "../mixin" as *;
 
 .crypto-market-marking {
   position: relative;
   .sub-bg {
     position: absolute;
-    left: -50%;
-    top: -50%;
+    left: -80%;
+    top: -60%;
     z-index: -1;
   }
   .main {
@@ -50,6 +51,32 @@
         margin-right: auto;
         margin-left: unset;
       }
+    }
+
+    @include responsive($xl) {
+      display: flex;
+      flex-direction: row;
+      gap: 10%;
+      .content {
+        flex: 1;
+      }
+      .media {
+        display: none;
+      }
+      article {
+        text-align: center;
+      }
+      article:last-child {
+        margin-top: unset;
+      }
+      img {
+        left: -150%;
+        top: -220%;
+      }
+    }
+    @include responsive($md) {
+      flex-direction: column;
+      gap: 64px;
     }
   }
 }

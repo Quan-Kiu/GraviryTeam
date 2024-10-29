@@ -1,20 +1,23 @@
 @use "../variables" as *;
 @use "../func" as *;
+@use "../mixin" as *;
 
 .app-header {
   position: relative;
   height: $header-height;
 
   &--top {
-    position: relative;
-    z-index: 2;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: $bg;
+    z-index: 999;
     display: flex;
     align-items: center;
-    padding: 22px 64px;
+    height: var(--top-header-height);
+    padding: 0px 64px;
     font-size: $fzss;
-
-    &__logo {
-    }
 
     &__nav {
       margin: 0 auto;
@@ -59,27 +62,6 @@
             display: flex;
             gap: 1px;
             align-items: center;
-          }
-
-          a[data-feature] {
-            &::after {
-              content: "";
-              display: block;
-              position: relative;
-              top: -4px;
-              width: 8px;
-              height: 8px;
-              color: $white-clr;
-              margin-left: 8px;
-              border-bottom: 1px solid currentColor;
-              border-left: 1px solid currentColor;
-              transform: rotate(-45deg);
-              transition: transform 0.2s, border-color 0.2s;
-            }
-          }
-          a[data-feature] + .dropdown-list {
-            opacity: 0;
-            visibility: hidden;
           }
 
           &:hover {
@@ -128,6 +110,185 @@
         }
       }
     }
+
+    &--mobile {
+      display: none;
+    }
+
+    a[data-feature] + .dropdown-list {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    a[data-feature],
+    label[data-feature] {
+      &::after {
+        content: "";
+        display: block;
+        position: relative;
+        top: -4px;
+        width: 8px;
+        height: 8px;
+        color: $white-clr;
+        margin-left: 8px;
+        border-bottom: 1px solid currentColor;
+        border-left: 1px solid currentColor;
+        transform: rotate(-45deg);
+        transition: transform 0.2s, border-color 0.2s;
+      }
+    }
+
+    #input-toggle {
+      position: absolute;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    @include responsive($xl) {
+      padding: 0px 32px;
+      border-bottom: thin solid $border-clr;
+
+      &__logo {
+        height: 30px;
+      }
+
+      &__nav {
+        display: none;
+      }
+
+      &__cta {
+        display: none;
+      }
+
+      .toggle {
+        div {
+          opacity: 1;
+          transition: transform 0.3s, opacity 0.2s;
+        }
+      }
+
+      #input-toggle:checked {
+        & + .toggle {
+          div:nth-child(2) {
+            transform: translateX(-100%);
+            opacity: 0;
+          }
+          div:nth-child(1) {
+            transform: rotate(45deg) translateY(10px);
+          }
+          div:nth-child(3) {
+            transform: rotate(-45deg) translateY(-10px);
+          }
+          & + section > .app-header--top--mobile {
+            transform: translateX(0);
+          }
+          & + section > .overlay {
+            display: block;
+          }
+        }
+      }
+      .toggle {
+        margin-left: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
+        div {
+          width: 30px;
+          height: 1px;
+          background: $white-clr;
+        }
+      }
+
+      .overlay {
+        display: none;
+        position: fixed;
+        z-index: -2;
+        inset: 0;
+        background: rgba($bg, $alpha: 0.6);
+      }
+
+      &--mobile {
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.5s;
+        transform: translateX(100%);
+        border-left: thin solid $border-clr;
+        position: fixed;
+        top: var(--top-header-height);
+        right: 0;
+        width: 40%;
+        bottom: 0;
+        background: $bg;
+        z-index: 999;
+        padding: 30px;
+
+        label[data-feature] + .dropdown-list {
+          display: none;
+          li {
+            a {
+              font-size: $fzs;
+            }
+          }
+        }
+
+        label[data-feature] {
+          cursor: pointer;
+          &::after {
+            display: inline-block;
+          }
+        }
+
+        #checkbox-dropdown {
+          visibility: hidden;
+          opacity: 0;
+          width: 0;
+          height: 0;
+          position: absolute;
+        }
+
+        #checkbox-dropdown:checked {
+          & ~ .dropdown-list {
+            display: block;
+          }
+          & + label {
+            &::after {
+              transform: rotate(135deg);
+              top: 0px;
+            }
+          }
+        }
+
+        & > ul {
+          font-size: $fzm;
+          flex: 1;
+          & > li {
+            & > a {
+              display: flex;
+              align-items: center;
+              padding: 8px 0;
+            }
+          }
+        }
+
+        .social {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 6px;
+          img {
+            filter: invert(1);
+            width: 34px;
+            height: 34px;
+          }
+        }
+
+        @include responsive($md) {
+          width: 100%;
+          border-left: unset;
+        }
+      }
+    }
   }
 
   &--main {
@@ -136,24 +297,36 @@
     top: 0;
     position: absolute;
     .hero {
+      padding: 0px var(--padding-x);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       margin: 0 auto;
-      width: 550px;
+      max-width: 550px;
       height: 100%;
       &__title {
         color: $white-clr;
         line-height: lineHeight($fzssl, 90);
         font-size: $fzssl;
+
+        @include responsive($xl) {
+          font-size: 6.4rem;
+        }
+        @include responsive($md) {
+          font-size: 3.8rem;
+        }
       }
       &__desc {
         font-size: $fzs;
         line-height: lineHeight($fzs, 30);
         margin-block: 20px;
         margin-bottom: 40px;
+      }
+
+      @include responsive($md) {
+        max-width: 400px;
       }
     }
     video {
@@ -181,11 +354,14 @@
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
+    @include responsive($md) {
+      display: none;
+    }
   }
   &__coin-list {
     padding: 0px 10px;
     transform: translateX(200%);
-    animation: scroll-x 20s infinite linear;
+    animation: scroll-x 40s infinite linear;
     flex: 1;
     display: flex;
     gap: 60px;

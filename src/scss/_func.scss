@@ -3,6 +3,5 @@
 @function lineHeight($fz, $lh) {
   $lhToRem: 0rem + math.div($lh, 10);
   $result: math.div($lhToRem, $fz);
-  @debug $result;
   @return $result;
 }

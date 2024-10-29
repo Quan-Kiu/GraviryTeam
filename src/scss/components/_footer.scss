@@ -1,0 +1,41 @@
+@use "../variables" as *;
+
+.app-footer {
+  border-top: thin solid #bcbcbc;
+  padding-bottom: 60px;
+  padding-top: 80px;
+  .main-content,
+  .sub-content {
+    display: flex;
+    justify-content: space-between;
+    font-size: $fzsss;
+  }
+
+  .sub-content {
+    margin-top: 60px;
+  }
+
+  a {
+    color: #bcbcbc;
+    transition: color 0.3s;
+  }
+
+  a:hover {
+    color: $white-clr;
+  }
+
+  .main-content {
+    .left-content {
+      ul {
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .site-name {
+        text-transform: uppercase;
+      }
+    }
+  }
+}

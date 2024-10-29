@@ -1,0 +1,133 @@
+@use "../variables" as *;
+@use "../func" as *;
+@use "../mixin" as *;
+
+.preview {
+  counter-reset: slice;
+  --max-width: 660px;
+  header {
+    width: unset;
+    max-width: var(--max-width);
+  }
+  .slice {
+    overflow: hidden;
+    text-align: center;
+    margin: 0 auto;
+    max-width: var(--max-width);
+
+    input {
+      position: absolute;
+      opacity: 0;
+      //   visibility: hidden;
+    }
+
+    .slice-tool {
+      margin-top: 27px;
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      .tool-btn {
+        background: $bg-linear;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        cursor: pointer;
+        width: 57px;
+        height: 57px;
+
+        &:last-child {
+          transform: rotateY(180deg);
+        }
+      }
+    }
+
+    .slice-list {
+      transition: all 0.5s;
+    }
+
+    #slice-input:focus {
+      animation: hidden 1s;
+      --slice-count: calc(var(--slice-count) + 1);
+      & + ul {
+        transform: translateX(
+          calc(-1 * calc(var(--max-width) * var(--slice-count)))
+        );
+      }
+    }
+
+    ul.slice-list {
+      margin-top: 32px;
+      display: flex;
+      li {
+        max-width: var(--max-width);
+        width: 100%;
+        flex-shrink: 0;
+
+        p {
+          display: flex;
+          flex-direction: column;
+          gap: 38px;
+          q {
+            font-size: $fzm;
+            display: block;
+            background: $bg-linear;
+            background-clip: text;
+            color: transparent;
+            line-height: lineHeight($fzm, 44);
+            @include responsive($xl) {
+              font-size: $fz;
+            }
+            @include responsive($md) {
+              font-size: $fzss;
+            }
+          }
+          span {
+            font-weight: 500;
+          }
+        }
+
+        .role {
+          margin-top: 28px;
+          display: flex;
+          gap: 16px;
+          justify-content: center;
+          align-items: center;
+          .role-name {
+            font-size: $fzss;
+          }
+          img {
+            height: 26px;
+            width: auto;
+          }
+        }
+      }
+    }
+
+    .slice-dots {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 32px;
+      .dot {
+        cursor: pointer;
+        width: 8px;
+        height: 8px;
+        background: $bg-linear;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  @include responsive($md) {
+    --max-width: 400px;
+  }
+}
+
+@keyframes hidden {
+  0% {
+  }
+  100% {
+    display: none;
+  }
+}

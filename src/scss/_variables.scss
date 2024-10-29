@@ -1,8 +1,10 @@
+@use "./mixin" as *;
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 $pf: "Inter", sans-serif;
 
 $fz: 2rem; //Default;
+$fzm: 2.6rem;
 $fzl: 3.6rem; //Larger;
 $fzsl: 5.6rem; // S larger;
 $fzssl: 7.6rem; //SS larger;
@@ -19,7 +21,21 @@ $black-clr: #000;
 $purple-clr: #665dcd;
 $blue-clr: #5fa4e6;
 $orange-clr: #d2ab67;
+$border-clr: #bcbcbc;
 $bg-linear: linear-gradient(to bottom right, #665dcd, #5fa4e6 45%, #d2ab67);
 $bg: #141619;
 $trade-bar-height: 75px;
-$header-height: calc(100vh - $trade-bar-height);
+$header-height: calc(100dvh - $trade-bar-height);
+
+//breakpoint
+$sm: 575.98px;
+$md: 767.98px;
+$lg: 991.98px;
+$xl: 1199.98px;
+$xxl: 1399.98px;
+:root {
+  --top-header-height: 90px;
+  @include responsive($xl) {
+    --top-header-height: 70px;
+  }
+}

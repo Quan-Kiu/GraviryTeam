@@ -1,58 +1,113 @@
 @use "../variables" as *;
 @use "../func" as *;
+@use "../mixin" as *;
 
 .our-partners {
   .container {
     position: relative;
     display: flex;
     align-items: center;
+    @include responsive($xl) {
+      flex-direction: column;
+    }
   }
 
   .sub-bg {
     position: absolute;
     left: -50%;
-    top: 0;
+    bottom: 0%;
+    transform: rotate(-45deg);
     z-index: -1;
+    @include responsive($xl) {
+      left: -60%;
+    }
+    @include responsive($lg) {
+      left: -80%;
+      top: 10%;
+    }
+    @include responsive($md) {
+      left: -100%;
+      top: 5%;
+    }
+    @include responsive($sm) {
+      display: none;
+    }
   }
 
   .title {
     width: 48%;
+    .animate-image-group {
+      top: 0;
+      left: -100px;
+      position: absolute;
+      width: 200px;
+      height: 200px;
+
+      .animate-image {
+        position: absolute;
+        &.img-top {
+          top: 0;
+          left: 80px;
+        }
+        &.img-right {
+          bottom: 0;
+          right: 0;
+        }
+        &.img-left {
+          bottom: 0;
+          left: 0;
+        }
+      }
+      @include responsive($xl) {
+        display: none;
+      }
+    }
+
+    @include responsive($xl) {
+      width: 100%;
+      text-align: center;
+      text-wrap-mode: nowrap;
+      margin-bottom: 100px;
+    }
   }
 
   .partners {
     overflow: hidden;
     flex: 1;
-    height: 696px;
+    position: relative;
+    max-height: 696px;
     justify-content: flex-end;
 
     display: flex;
 
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+      height: 200px;
+      background: linear-gradient(to top, #14161900, #141619e0, #141619);
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      z-index: 1;
+      height: 200px;
+      background: linear-gradient(to bottom, #14161900, #141619e0, #141619);
+    }
+
     ul {
-      animation: scroll-to-bottom 10s alternate-reverse infinite linear;
+      animation: scroll-to-bottom 15s alternate-reverse infinite linear;
       position: relative;
       &:last-child {
-        animation: scroll-to-top 10s alternate-reverse infinite linear;
+        animation: scroll-to-top 15s alternate-reverse infinite linear;
       }
-      &::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        z-index: 1;
-        height: 200px;
-        background: linear-gradient(to top, #14161900, #141619e0, #141619);
-      }
-      &::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        z-index: 1;
-        height: 200px;
-        background: linear-gradient(to bottom, #14161900, #141619e0, #141619);
-      }
+
       li {
         display: flex;
         flex-direction: column;
@@ -79,6 +134,9 @@
     ul + ul {
       margin-left: 24px;
       margin-top: 32px;
+    }
+
+    @include responsive($xl) {
     }
   }
 }

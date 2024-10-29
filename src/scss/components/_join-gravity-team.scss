@@ -1,0 +1,37 @@
+@use "../variables" as *;
+@use "../func" as *;
+@use "../mixin" as *;
+
+.join-gravity-team {
+  .container {
+    display: flex;
+    gap: 18%;
+    .title {
+      position: relative;
+      img {
+        position: absolute;
+        z-index: -1;
+        &:first-child {
+          left: -150px;
+          top: -100px;
+        }
+        &:last-of-type {
+          left: 130px;
+          top: -110px;
+        }
+      }
+    }
+
+    .main {
+      margin-left: auto;
+    }
+
+    @include responsive($xl) {
+      flex-direction: column;
+      max-width: 660px;
+      .title {
+        max-width: 400px;
+      }
+    }
+  }
+}

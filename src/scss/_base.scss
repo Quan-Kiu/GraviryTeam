@@ -1,9 +1,20 @@
 @use "./variables" as var;
 @use "./func" as *;
+@use "./mixin" as *;
+
+:root {
+  --padding-x: 32px;
+  @include responsive(var.$md) {
+    --padding-x: 16px;
+  }
+}
+
 html {
   font-size: 62.5%;
 }
 body {
+  height: 100dvh;
+  overflow-y: auto;
   overflow-x: hidden;
   background: var.$bg;
   font-family: var.$pf;
@@ -59,7 +70,8 @@ a {
 }
 
 .container {
-  width: var.$container;
+  padding: 0px var(--padding-x);
+  max-width: calc(var.$container + calc(var(--padding-x) * 2));
   margin: 0 auto;
 }
 
@@ -70,11 +82,17 @@ a {
 .section-title {
   font-size: var.$fzsl;
   line-height: lineHeight(var.$fzsl, 78);
+  @include responsive(var.$md) {
+    font-size: 3.8rem;
+  }
 }
 
 .section-desc {
   margin-top: 24px;
   line-height: lineHeight(var.$fz, 30);
+  @include responsive(var.$md) {
+    font-size: 1.8rem;
+  }
 }
 
 .section-header {
