@@ -1,4 +1,4 @@
-(() => {
+(async () => {
   const $ = document.querySelector.bind(document);
   const $$ = document.querySelectorAll.bind(document);
 
@@ -6,6 +6,7 @@
   const sliceTool = $(".slice-tool");
   const sliceItems = $$(".slice-item") || [];
   const dots = $$(".dot") || [];
+  const tradeBar = $(".trade-bar__coin-list") || [];
 
   function handleSliceChange(action) {
     let sliceActive = +sliceList.getAttribute("data-active") || 0;
@@ -65,6 +66,27 @@
     };
   }
 
+  async function getTradeBarData() {
+    return fetch("https://api.binance.com/api/v3/ticker/price").then(
+      async (data) => data.json()
+    );
+  }
+
+  function addTradeBarData(data) {
+    let html = ``;
+    data = data.splice(0, 50);
+    data.forEach((element) => {
+      html += `<li class="trade-bar__item">
+      <img aria-hidden="true" src="" alt="" class="icon">
+      <div class="info">
+        <span class="price">$${element.price}</span>
+        <span class="name">${element.symbol}</span>
+      </div>
+    </li>`;
+    });
+    tradeBar.innerHTML = html;
+  }
+
   const autoInstance = autoSlice();
 
   autoInstance.start();
@@ -77,16 +99,6 @@
     }
   };
 
-  const options = {
-    root: document.body,
-    rootMargin: "0px",
-    threshold: 1.0,
-  };
-  const observer = new IntersectionObserver((data) => {
-    data.forEach((entry) => {
-      console.log(entry);
-    });
-  }, options);
-
-  observer.observe($(".crypto-market-marking"));
+  const tradeData = await getTradeBarData();
+  addTradeBarData(tradeData);
 })();

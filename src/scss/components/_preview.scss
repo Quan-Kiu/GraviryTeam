@@ -99,6 +99,12 @@
           img {
             height: 26px;
             width: auto;
+            @include responsive($sm) {
+              height: 16px;
+            }
+          }
+          @include responsive($sm) {
+            gap: 8px;
           }
         }
       }

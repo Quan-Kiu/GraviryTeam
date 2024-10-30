@@ -118,6 +118,9 @@
         width: 192px;
         border: thin solid #41557280;
         height: 192px;
+        span {
+          text-transform: uppercase;
+        }
         background: linear-gradient(to bottom, #41557226, #1b1b1e1a);
         img {
           width: 80px;
@@ -145,6 +148,12 @@
           padding: 24px;
         }
       }
+    }
+  }
+
+  @include responsive($sm) {
+    .title {
+      text-wrap: auto;
     }
   }
 }

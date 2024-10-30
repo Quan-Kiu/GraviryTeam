@@ -361,7 +361,7 @@
   &__coin-list {
     padding: 0px 10px;
     transform: translateX(200%);
-    animation: scroll-x 40s infinite linear;
+    animation: scroll-x 120s infinite linear;
     flex: 1;
     display: flex;
     gap: 60px;
@@ -386,12 +386,18 @@
       }
       color: rgba($black-clr, $alpha: 0.8);
     }
+    @include responsive($md) {
+      gap: 40px;
+    }
+    @include responsive($sm) {
+      gap: 30px;
+    }
   }
 }
 
 @keyframes scroll-x {
   0% {
-    transform: translateX(200%);
+    transform: translateX(100dvw);
   }
   100% {
     transform: translateX(-100%);

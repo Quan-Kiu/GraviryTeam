@@ -155,11 +155,12 @@ table {
 
 html {
   font-size: 62.5%;
+  overflow-x: hidden;
 }
 
 body {
   min-height: 100dvh;
-  max-width: 100dvw;
+  width: 100dvw;
   overflow-y: auto;
   overflow-x: hidden;
   background: #141619;
@@ -605,7 +606,7 @@ a {
 .trade-bar__coin-list {
   padding: 0px 10px;
   transform: translateX(200%);
-  animation: scroll-x 40s infinite linear;
+  animation: scroll-x 120s infinite linear;
   flex: 1;
   display: flex;
   gap: 60px;
@@ -631,10 +632,20 @@ a {
 .trade-bar__coin-list li .info span:nth-child(2) {
   font-size: 1.5rem;
 }
+@media screen and (max-width: 767.98px) {
+  .trade-bar__coin-list {
+    gap: 40px;
+  }
+}
+@media screen and (max-width: 575.98px) {
+  .trade-bar__coin-list {
+    gap: 30px;
+  }
+}
 
 @keyframes scroll-x {
   0% {
-    transform: translateX(200%);
+    transform: translateX(100dvw);
   }
   100% {
     transform: translateX(-100%);
@@ -911,6 +922,9 @@ a {
   height: 192px;
   background: linear-gradient(to bottom, rgba(65, 85, 114, 0.1490196078), rgba(27, 27, 30, 0.1019607843));
 }
+.our-partners .partners ul li span {
+  text-transform: uppercase;
+}
 .our-partners .partners ul li img {
   width: 80px;
   height: 80px;
@@ -933,6 +947,11 @@ a {
     width: 100%;
     height: auto;
     padding: 24px;
+  }
+}
+@media screen and (max-width: 575.98px) {
+  .our-partners .title {
+    text-wrap: auto;
   }
 }
 
@@ -1047,6 +1066,16 @@ a {
 .preview .slice ul.slice-list li .role img {
   height: 26px;
   width: auto;
+}
+@media screen and (max-width: 575.98px) {
+  .preview .slice ul.slice-list li .role img {
+    height: 16px;
+  }
+}
+@media screen and (max-width: 575.98px) {
+  .preview .slice ul.slice-list li .role {
+    gap: 8px;
+  }
 }
 .preview .slice .slice-dots {
   display: flex;
