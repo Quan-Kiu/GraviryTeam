@@ -158,7 +158,8 @@ html {
 }
 
 body {
-  height: 100dvh;
+  min-height: 100dvh;
+  max-width: 100dvw;
   overflow-y: auto;
   overflow-x: hidden;
   background: #141619;
@@ -781,6 +782,9 @@ a {
     flex-direction: column;
     gap: 64px;
   }
+  .crypto-market-marking .main p {
+    font-size: 1.8rem;
+  }
 }
 
 .our-partners .container {
@@ -921,6 +925,17 @@ a {
   margin-left: 24px;
   margin-top: 32px;
 }
+@media screen and (max-width: 575.98px) {
+  .our-partners .partners {
+    max-height: 550px;
+  }
+  .our-partners .partners ul li {
+    width: 100%;
+    height: auto;
+    padding: 24px;
+  }
+}
+
 @keyframes scroll-to-bottom {
   0% {
     transform: translateY(-100%);
@@ -1043,8 +1058,11 @@ a {
   cursor: pointer;
   width: 8px;
   height: 8px;
-  background: linear-gradient(to bottom right, #665dcd, #5fa4e6 45%, #d2ab67);
+  background-color: #333;
   border-radius: 50%;
+}
+.preview .slice .slice-dots .dot.active {
+  background: linear-gradient(to bottom right, #665dcd, #5fa4e6 45%, #d2ab67);
 }
 @media screen and (max-width: 767.98px) {
   .preview {
@@ -1088,6 +1106,19 @@ a {
     max-width: 400px;
   }
 }
+@media screen and (max-width: 767.98px) {
+  .join-gravity-team .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .join-gravity-team .container .title {
+    margin-bottom: 24px;
+  }
+  .join-gravity-team .container p {
+    font-size: 1.8rem;
+  }
+}
 
 .contact-us {
   text-align: center;
@@ -1100,6 +1131,7 @@ a {
   border-top: thin solid #bcbcbc;
   padding-bottom: 60px;
   padding-top: 80px;
+  color: #bcbcbc;
 }
 .app-footer .main-content,
 .app-footer .sub-content {
@@ -1111,7 +1143,6 @@ a {
   margin-top: 60px;
 }
 .app-footer a {
-  color: #bcbcbc;
   transition: color 0.3s;
 }
 .app-footer a:hover {
@@ -1125,6 +1156,32 @@ a {
 }
 .app-footer .main-content .left-content .site-name {
   text-transform: uppercase;
+}
+@media screen and (max-width: 767.98px) {
+  .app-footer .container {
+    text-align: center;
+  }
+  .app-footer .container .main-content {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .app-footer .container .main-content .site-name {
+    display: none;
+  }
+  .app-footer .container .main-content .right-content {
+    order: 1;
+  }
+  .app-footer .container .main-content .left-content {
+    order: 2;
+  }
+  .app-footer .container .main-content .left-content ul {
+    gap: 24px;
+  }
+  .app-footer .container .sub-content {
+    gap: 24px;
+    flex-direction: column;
+    margin-top: 24px;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

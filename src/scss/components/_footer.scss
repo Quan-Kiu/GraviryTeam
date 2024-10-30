@@ -1,9 +1,11 @@
 @use "../variables" as *;
+@use "../mixin" as *;
 
 .app-footer {
   border-top: thin solid #bcbcbc;
   padding-bottom: 60px;
   padding-top: 80px;
+  color: #bcbcbc;
   .main-content,
   .sub-content {
     display: flex;
@@ -16,7 +18,6 @@
   }
 
   a {
-    color: #bcbcbc;
     transition: color 0.3s;
   }
 
@@ -35,6 +36,35 @@
 
       .site-name {
         text-transform: uppercase;
+      }
+    }
+  }
+  @include responsive($md) {
+    .container {
+      text-align: center;
+      .main-content {
+        flex-direction: column;
+        gap: 24px;
+        .site-name {
+          display: none;
+        }
+        .right-content {
+          order: 1;
+        }
+        .left-content {
+          order: 2;
+          ul {
+            gap: 24px;
+          }
+        }
+      }
+      .sub-content {
+        gap: 24px;
+        flex-direction: column;
+        margin-top: 24px;
+      }
+
+      .copyright {
       }
     }
   }

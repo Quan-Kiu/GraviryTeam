@@ -2,16 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <base href="/src/" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gravity Team</title>
-    <link rel="stylesheet" href="/src/css/index.css" />
+    <link rel="stylesheet" href="css/index.css" />
   </head>
   <body>
     <header class="app-header">
       <section class="app-header--top">
         <img
           class="app-header--top__logo"
-          src="./assets/images/logo-light.png.png"
+          src="assets/images/logo-light.png.png"
           alt="Gravity Team Logo"
         />
         <nav class="app-header--top__nav">
@@ -79,10 +80,10 @@
 
             <div class="social">
               <a href="#"
-                ><img src="./assets/icons/twitter.png" alt="twitter"
+                ><img src="assets/icons/twitter.png" alt="twitter"
               /></a>
               <a href="#"
-                ><img src="./assets/icons/linkedin.png" alt="linkedin"
+                ><img src="assets/icons/linkedin.png" alt="linkedin"
               /></a>
             </div>
           </div>
@@ -104,7 +105,7 @@
           loop
           muted
           aria-hidden="true"
-          src="./assets/videos/hero-animation.mp4"
+          src="assets/videos/hero-animation.mp4"
         ></video>
       </section>
     </header>
@@ -389,7 +390,7 @@
 
         <div class="main">
           <img
-            src="./assets/images/background-blob-service-1.png.png"
+            src="assets/images/background-blob-service-1.png.png"
             alt=""
             class="sub-bg"
           />
@@ -411,7 +412,7 @@
             </div>
             <figure class="media">
               <img
-                src="./assets/images/crypto-market-making-1.png"
+                src="assets/images/crypto-market-making-1.png"
                 alt="Market Making for Crypto Projects"
               />
             </figure>
@@ -435,7 +436,7 @@
             </div>
             <figure class="media">
               <img
-                src="./assets/images/crypto-market-making-2.png"
+                src="assets/images/crypto-market-making-2.png"
                 alt="Market Making for Crypto Projects"
               />
             </figure>
@@ -448,23 +449,23 @@
       <div class="container">
         <div class="title">
           <img
-            src="./assets/images/our-partners/middle-left-2.png.png"
+            src="assets/images/our-partners/middle-left-2.png.png"
             class="sub-bg"
           />
           <div class="animate-image-group">
             <img
               class="animate-image img-top"
-              src="./assets/images/our-partners/near.png.png"
+              src="assets/images/our-partners/near.png.png"
               alt=""
             />
             <img
               class="animate-image img-right"
-              src="./assets/images/our-partners/mena.png.png"
+              src="assets/images/our-partners/mena.png.png"
               alt=""
             />
             <img
               class="animate-image img-left"
-              src="./assets/images/our-partners/solana.png.png"
+              src="assets/images/our-partners/solana.png.png"
               alt=""
             />
           </div>
@@ -559,14 +560,17 @@
           </p>
         </header>
         <div class="main">
-          <div class="slice" style="--slice-count: 1">
+          <div class="slice">
             <div class="slice-tool">
-              <label for="slice-input" class="tool-btn prev"> ← </label>
-              <label for="slice-input" class="tool-btn next">←</label>
+              <label for="slice-input" data-action="prev" class="tool-btn prev">
+                ←
+              </label>
+              <label for="slice-input" data-action="next" class="tool-btn next"
+                >←</label
+              >
             </div>
-            <input id="slice-input" type="text" />
-            <ul class="slice-list">
-              <li class="li slice-item" style="--slice-item: 1">
+            <ul class="slice-list" data-active="0">
+              <li class="li slice-item">
                 <p>
                   <q>
                     Gravity Team has been a supportive partner that has provided
@@ -580,14 +584,14 @@
                   <div class="role-name">Co-founder & CEO of Bitkub</div>
                   <div class="separate">|</div>
                   <img
-                    src="./assets/images/review/logo-1.png"
+                    src="assets/images/review/logo-1.png"
                     alt=""
                     class="logo"
                   />
                 </div>
               </li>
 
-              <li class="li slice-item" style="--slice-item: 2">
+              <li class="li slice-item">
                 <p>
                   <q
                     >Gravity Team is a key partner for Bitso, and their
@@ -606,14 +610,14 @@
                   <div class="role-name">Head of Markets of Bitso</div>
                   <div class="separate">|</div>
                   <img
-                    src="./assets/images/review/logo-2.png"
+                    src="assets/images/review/logo-2.png"
                     alt=""
                     class="logo"
                   />
                 </div>
               </li>
 
-              <li class="li slice-item" style="--slice-item: 3">
+              <li class="li slice-item">
                 <p>
                   <q
                     >Gravity Team has been a supportive partner that has
@@ -628,7 +632,7 @@
                   <div class="role-name">CEO of HashUp</div>
                   <div class="separate">|</div>
                   <img
-                    src="./assets/images/review/logo-3.png"
+                    src="assets/images/review/logo-3.png"
                     alt=""
                     class="logo"
                   />
@@ -637,7 +641,7 @@
             </ul>
 
             <ul class="slice-dots">
-              <li class="dot"></li>
+              <li class="dot active"></li>
               <li class="dot"></li>
               <li class="dot"></li>
             </ul>
@@ -650,11 +654,11 @@
       <div class="container">
         <div class="title">
           <img
-            src="./assets/images/sub-bg-join-gravity-team/sub-bg-join-gravity-team.png"
+            src="assets/images/sub-bg-join-gravity-team/sub-bg-join-gravity-team.png"
             alt=""
           />
           <img
-            src="./assets/images/sub-bg-join-gravity-team/sub-bg-join-gravity-team-2.png"
+            src="assets/images/sub-bg-join-gravity-team/sub-bg-join-gravity-team-2.png"
             alt=""
           />
 
@@ -712,7 +716,7 @@
           </div>
           <div class="right-content">
             <img
-              src="./assets/images/logo-light.png.png"
+              src="assets/images/logo-light.png.png"
               aria-label="Logo"
               alt="Gravity Team"
             />
@@ -720,9 +724,11 @@
         </div>
         <div class="sub-content">
           <a href="#"> Terms of Use & Privacy Policy </a>
-          <div>©2024 Gravity Team. All Rights Reserved</div>
+          <div class="copyright">©2024 Gravity Team. All Rights Reserved</div>
         </div>
       </div>
     </footer>
+
+    <script type="module" defer src="js/main.js"></script>
   </body>
 </html>

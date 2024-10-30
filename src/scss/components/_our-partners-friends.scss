@@ -136,7 +136,15 @@
       margin-top: 32px;
     }
 
-    @include responsive($xl) {
+    @include responsive($sm) {
+      max-height: 550px;
+      ul {
+        li {
+          width: 100%;
+          height: auto;
+          padding: 24px;
+        }
+      }
     }
   }
 }

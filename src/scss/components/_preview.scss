@@ -113,7 +113,10 @@
         cursor: pointer;
         width: 8px;
         height: 8px;
-        background: $bg-linear;
+        &.active {
+          background: $bg-linear;
+        }
+        background-color: #333;
         border-radius: 50%;
       }
     }
