@@ -573,12 +573,24 @@ a {
     max-width: 400px;
   }
 }
-.app-header--main video {
+.app-header--main video,
+.app-header--main img {
   z-index: -2;
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
+}
+.app-header--main img {
+  display: none;
+}
+@media screen and (max-width: 767.98px) {
+  .app-header--main img {
+    display: block;
+  }
+  .app-header--main video {
+    display: none;
+  }
 }
 
 .trade-bar {

@@ -77,7 +77,6 @@
     data = data.splice(0, 50);
     data.forEach((element) => {
       html += `<li class="trade-bar__item">
-      <img aria-hidden="true" src="" alt="" class="icon">
       <div class="info">
         <span class="price">$${element.price}</span>
         <span class="name">${element.symbol}</span>

@@ -329,12 +329,24 @@
         max-width: 400px;
       }
     }
-    video {
+    video,
+    img {
       z-index: -2;
       position: absolute;
       left: 0;
       bottom: 0;
       width: 100%;
+    }
+    img {
+      display: none;
+    }
+    @include responsive($md) {
+      img {
+        display: block;
+      }
+      video {
+        display: none;
+      }
     }
   }
 }
